@@ -65,6 +65,9 @@ protected:
 
 public:
   QGridLayout* gridLayout;
+  QLabel* topLabel;
+  QLabel* midLabel;
+  QLabel* bottomLabel;
   ctkSliderWidget* topGainSlider;
   ctkSliderWidget* midGainSlider;
   ctkSliderWidget* bottomGainSlider;
@@ -127,24 +130,27 @@ void qSlicerUltrasoundTGCParameterWidgetPrivate::setupUi(QWidget* qSlicerUltraso
   qSlicerUltrasoundTGCParameterWidget->setLayout(gridLayout);
 
   // add top, mid and bottom gain sliders
-  QLabel* topLabel = new QLabel("Top Gain:");
-  gridLayout->addWidget(topLabel, 0, 0);
+  this->topLabel = new QLabel("Top Gain:");
+  this->topLabel->setObjectName(QStringLiteral("tgcTopLabel"));
+  gridLayout->addWidget(this->topLabel, 0, 0);
   this->topGainSlider = new ctkSliderWidget(qSlicerUltrasoundTGCParameterWidget);
-  this->topGainSlider->setObjectName(QStringLiteral("topGainSlider"));
+  this->topGainSlider->setObjectName(QStringLiteral("tgcTopSlider"));
   this->topGainSlider->setTracking(false);
   gridLayout->addWidget(this->topGainSlider, 0, 1);
 
-  QLabel* midLabel = new QLabel("Mid Gain:");
-  gridLayout->addWidget(midLabel, 1, 0);
+  this->midLabel = new QLabel("Mid Gain:");
+  this->midLabel->setObjectName(QStringLiteral("tgcMidLabel"));
+  gridLayout->addWidget(this->midLabel, 1, 0);
   this->midGainSlider = new ctkSliderWidget(qSlicerUltrasoundTGCParameterWidget);
-  this->midGainSlider->setObjectName(QStringLiteral("midGainSlider"));
+  this->midGainSlider->setObjectName(QStringLiteral("tgcMidSlider"));
   this->midGainSlider->setTracking(false);
   gridLayout->addWidget(this->midGainSlider, 1, 1);
 
-  QLabel* bottomLabel = new QLabel("Bottom Gain:");
-  gridLayout->addWidget(bottomLabel, 2, 0);
+  this->bottomLabel = new QLabel("Bottom Gain:");
+  this->bottomLabel->setObjectName(QStringLiteral("tgcBottomLabel"));
+  gridLayout->addWidget(this->bottomLabel, 2, 0);
   this->bottomGainSlider = new ctkSliderWidget(qSlicerUltrasoundTGCParameterWidget);
-  this->bottomGainSlider->setObjectName(QStringLiteral("bottomGainSlider"));
+  this->bottomGainSlider->setObjectName(QStringLiteral("tgcBottomSlider"));
   this->bottomGainSlider->setTracking(false);
   gridLayout->addWidget(this->bottomGainSlider, 2, 1);
 }
